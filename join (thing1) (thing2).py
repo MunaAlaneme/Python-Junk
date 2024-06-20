@@ -1,0 +1,38 @@
+print("Join 2 things.")
+print()
+thing1 = input(" Enter input 1 >> ")
+thing2 = input(" Enter input 2 >> ")
+print(f"{thing1}{thing2}")
+
+print()
+print()
+
+print("Join 3 things.")
+print()
+thing1 = input(" Enter input 1 >> ")
+thing2 = input(" Enter input 2 >> ")
+thing3 = input(" Enter input 3 >> ")
+print(f"{thing1}{thing2}{thing3}")
+
+print()
+print()
+
+print("Join 4 things.")
+print()
+thing1 = input(" Enter input 1 >> ")
+thing2 = input(" Enter input 2 >> ")
+thing3 = input(" Enter input 3 >> ")
+thing4 = input(" Enter input 4 >> ")
+print(f"{thing1}{thing2}{thing3}{thing4}")
+
+print()
+print()
+
+print("Join 5 things.")
+print()
+thing1 = input(" Enter input 1 >> ")
+thing2 = input(" Enter input 2 >> ")
+thing3 = input(" Enter input 3 >> ")
+thing4 = input(" Enter input 4 >> ")
+thing5 = input(" Enter input 5 >> ")
+print(f"{thing1}{thing2}{thing3}{thing4}{thing5}")

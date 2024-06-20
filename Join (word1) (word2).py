@@ -1,0 +1,38 @@
+print("Join 2 words.")
+print()
+word1 = input(" Enter word 1 >> ")
+word2 = input(" Enter word 2 >> ")
+print(word1,word2)
+
+print()
+print()
+
+print("Join 3 words.")
+print()
+word1 = input(" Enter word 1 >> ")
+word2 = input(" Enter word 2 >> ")
+word3 = input(" Enter word 3 >> ")
+print(word1,word2,word3)
+
+print()
+print()
+
+print("Join 4 words.")
+print()
+word1 = input(" Enter word 1 >> ")
+word2 = input(" Enter word 2 >> ")
+word3 = input(" Enter word 3 >> ")
+word4 = input(" Enter word 4 >> ")
+print(word1,word2,word3,word4)
+
+print()
+print()
+
+print("Join 5 words.")
+print()
+word1 = input(" Enter word 1 >> ")
+word2 = input(" Enter word 2 >> ")
+word3 = input(" Enter word 3 >> ")
+word4 = input(" Enter word 4 >> ")
+word5 = input(" Enter word 5 >> ")
+print(word1,word2,word3,word4,word5)
