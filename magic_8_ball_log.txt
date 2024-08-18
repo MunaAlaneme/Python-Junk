@@ -1,0 +1,7 @@
+2024-07-09 12:20:28 - Question: p - Answer: Outlook is good.
+2024-07-10 12:10:52 - Question: What I get to eat lunch today? - Answer: Very doubtful.
+2024-07-10 12:11:09 - Question: But wait are you sure? - Answer: As I see it, yes.
+2024-07-10 12:11:40 - Question: Are you a master at coding? - Answer: As I see it, yes.
+2024-07-10 12:13:04 - Question: am i fat - Answer: Do not count on it.
+2024-07-10 12:13:15 - Question: Are you stupid? - Answer: No, certainly not.
+2024-07-10 12:13:48 - Question: .exe.txt.exe - Answer: Outlook is good.
