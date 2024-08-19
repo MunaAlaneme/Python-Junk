@@ -89,7 +89,7 @@ screenheight = 1024
 window = pygame.display.set_mode((screenwidth, screenheight),  pygame.RESIZABLE)
 elevation = screenheight * 0.8
 game_images = {}
-framespersecond = 240
+framespersecond = 24
 pipeimage = 'GameLauncher/assets/games/FlappyBird/assets/img/pipe.png'
 background_image = "GameLauncher/assets/games/FlappyBird/assets/img/Background6.png"
 birbNum = random.randint(0, 1)
@@ -132,14 +132,13 @@ def flappygame():
     ]
 
     # Pipe velocity along x
-    pipeVelX = -4/(framespersecond/60)
+    pipeVelX = -4
 
     # Bird velocity
-    bird_velocity_y = -9/framespersecond # -9*(50/framespersecond)
-    bird_Max_Vel_Y = framespersecond/3 # 10*(50/framespersecond)
-    birdAccY = (24**2)/(framespersecond**2) # 17*(4/(framespersecond**(0.4*(framespersecond/(framespersecond)))))/framespersecond
+    bird_velocity_y = 0
+    bird_Max_Vel_Y = 10
 
-    bird_flap_velocity = -400/framespersecond # -8*(1000000/(framespersecond**(1.4*(framespersecond/(framespersecond)))))/framespersecond
+    bird_flap_velocity = -1
     bird_flapped = False
     bird_down_velocity_y = bird_flap_velocity*-2
     bird_down = 0
@@ -201,7 +200,8 @@ def flappygame():
                 print(f"Your score is {your_score}.")
 
         if bird_velocity_y < bird_Max_Vel_Y and not bird_flapped:
-            bird_velocity_y += birdAccY
+            bird_velocity_y *= .09**delta_time
+            bird_velocity_y += 3*delta_time
         if bird_down_down == 1:
             if bird_down > 0:
                 bird_velocity_y = bird_down_velocity_y
@@ -212,8 +212,7 @@ def flappygame():
         if bird_flapped:
             bird_flapped = False
         playerHeight = BeegBirb.get_height()
-        vertical = vertical + \
-            min(bird_velocity_y, elevation - vertical - playerHeight)
+        vertical += min(bird_velocity_y * delta_time * 666, elevation - vertical - playerHeight)
         
         # Move pipes to the left
         for upperPipe, lowerPipe in zip(up_pipes, down_pipes):
@@ -267,7 +266,7 @@ def flappygame():
         # Refreshing the game window and displaying the score.   
         pygame.display.update()
         pygame.display.flip()
-        framespersecond_clock.tick(framespersecond)
+        #Clock.tick(24)
 
 def isGameOver(horizontal, vertical, up_pipes, down_pipes):
     if vertical > elevation - (((birbNum == 1) * 66) + ((birbNum == 0) * 40)) or vertical < 0:
@@ -304,7 +303,7 @@ def createPipe():
 # Program where the game starts
 # For initializing modules of pygame library
 pygame.init()
-framespersecond_clock = pygame.time.Clock()
+Clock = pygame.time.Clock()
 
 # Sets the title on top of game window
 pygame.display.set_caption("Morphing Under Night Armor - Flappy Bird")
@@ -384,4 +383,3 @@ while True:
                 window.blit(BeegBirb, (horizontal, vertical))
                 window.blit(game_images['sea_level'], (ground, elevation))
                 pygame.display.update()
-                framespersecond_clock.tick(framespersecond)
