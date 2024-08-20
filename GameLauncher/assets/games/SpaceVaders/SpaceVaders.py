@@ -116,13 +116,15 @@ while running:
         if event.type == pygame.QUIT:
             running = False
         # If keystroke is pressed check whether its right or left
-    if keyboard.is_pressed('up'):
+    
+    keys = pygame.key.get_pressed()  # Checking pressed keys
+    if keyboard.is_pressed('up') or keys[pygame.K_UP]:
         playerPosChange[1] -= 12 * delta_time
-    if keyboard.is_pressed('down'):
+    if keyboard.is_pressed('down') or keys[pygame.K_DOWN]:
         playerPosChange[1] += 12 * delta_time
-    if keyboard.is_pressed('left'):
+    if keyboard.is_pressed('left') or keys[pygame.K_LEFT]:
         playerPosChange[0] -= 12 * delta_time
-    if keyboard.is_pressed('right'):
+    if keyboard.is_pressed('right') or keys[pygame.K_RIGHT]:
         playerPosChange[0] += 12 * delta_time
 
     # RGB - Red, Green, Blue
