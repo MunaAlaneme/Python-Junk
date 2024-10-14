@@ -31,7 +31,7 @@ class Settings(QWidget):
         }
 
     def createExampleGroup1(self):
-        groupBox = QGroupBox("Slider Example")
+        groupBox = QGroupBox("Music")
 
         radio1 = QRadioButton("&Music On")
         radio2 = QRadioButton("&Music Off")
@@ -41,6 +41,7 @@ class Settings(QWidget):
         slider.setTickPosition(QSlider.TicksBothSides)
         slider.setTickInterval(10)
         slider.setSingleStep(1)
+        slider.setValue(100)
 
         radio1.setChecked(True)
         radio2.setChecked(False)
@@ -54,15 +55,23 @@ class Settings(QWidget):
 
         return groupBox
     def createExampleGroup2(self):
-        groupBox = QGroupBox("Slider Example")
+        groupBox = QGroupBox("SFX")
         radio3 = QRadioButton("&SFX On")
         radio4 = QRadioButton("&SFX Off")
+        
+        slider2 = QSlider(Qt.Horizontal)
+        slider2.setFocusPolicy(Qt.StrongFocus)
+        slider2.setTickPosition(QSlider.TicksBothSides)
+        slider2.setTickInterval(10)
+        slider2.setSingleStep(1)
+        slider2.setValue(100)
 
         radio3.setChecked(True)
         radio4.setChecked(False)
         vbox2 = QVBoxLayout()
         vbox2.addWidget(radio3)
         vbox2.addWidget(radio4)
+        vbox2.addWidget(slider2)
         vbox2.addStretch(1)
         groupBox.setLayout(vbox2)
 
@@ -73,7 +82,6 @@ QApplication.setAttribute(Qt.AA_EnableHighDpiScaling)
 QApplication.setAttribute(Qt.AA_UseHighDpiPixmaps)
 app = QApplication(sys.argv)
 settings = Settings()
-settings.show()
 
 def constrain(val, min_val, max_val):
 
@@ -328,6 +336,7 @@ elif mus == 2:
 mixer.music.play(-1)
 
 # Here starts the main game
+settings.show()
 while True:
     # Sets the coordinates of flappy bird
     horizontal = int(screenwidth/5)
