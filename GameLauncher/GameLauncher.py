@@ -45,9 +45,9 @@ WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
 GRAY = (200, 200, 200)
 GREEN = (0, 255, 0)
-(TargetButtonColorRed, TargetButtonColorGreen, TargetButtonColorBlue) = ([200, 200, 200, 200, 200, 200, 200, 200, 200], [200, 200, 200, 200, 200, 200, 200, 200, 200], [200, 200, 200, 200, 200, 200, 200, 200, 200]) #(200, 200, 200)
-(ButtonColorRed, ButtonColorGreen, ButtonColorBlue) = ([0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0, 0]) #(0, 0, 0)
-GameNames = ("1. Snake", "2. Flappy Bird", "3. GUI Calculator", "4. Slide Puzzle", "5. Space Invaders", "6. SnowFall", "7. Auto Tic Tac Toe", "8. Manual Tic Tac Toe", "9. Clicker Game")
+(TargetButtonColorRed, TargetButtonColorGreen, TargetButtonColorBlue) = ([200, 200, 200, 200, 200, 200, 200, 200], [200, 200, 200, 200, 200, 200, 200, 200], [200, 200, 200, 200, 200, 200, 200, 200]) #(200, 200, 200)
+(ButtonColorRed, ButtonColorGreen, ButtonColorBlue) = ([0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0], [0, 0, 0, 0, 0, 0, 0, 0]) #(0, 0, 0)
+GameNames = ("1. Snake", "2. Flappy Bird", "3. GUI Calculator", "4. Slide Puzzle", "5. Space Invaders", "6. SnowFall", "7. Auto Tic Tac Toe", "8. Manual Tic Tac Toe")
 
 # Create the screen
 screen = pygaming.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT),  pygaming.RESIZABLE)
@@ -109,12 +109,12 @@ while running:
     else:
         scale2 = 0.1
     font = pygaming.font.Font("./fonts/Dosis/static/Dosis-Bold.ttf", int(28*scale2))
-    BUTTON_WIDTH = (120, 180, 220, 200, 220, 160, 260, 260, 220)
-    (BUTTON_X_POS, BUTTON_Y_POS) = ([20, 160, 360, 600, 20, 260, 440, 20, 300], ((SCREEN_HEIGHT // 2) - 125, (SCREEN_HEIGHT // 2) - 125, (SCREEN_HEIGHT // 2) - 125, (SCREEN_HEIGHT // 2) - 125, (SCREEN_HEIGHT // 2) - 25, (SCREEN_HEIGHT // 2) - 25, (SCREEN_HEIGHT // 2) - 25, (SCREEN_HEIGHT // 2) + 75, (SCREEN_HEIGHT // 2) + 75))
+    BUTTON_WIDTH = (120, 180, 220, 200, 220, 160, 260, 260)
+    (BUTTON_X_POS, BUTTON_Y_POS) = ([20, 160, 360, 600, 20, 260, 440, 20], ((SCREEN_HEIGHT // 2) - 125, (SCREEN_HEIGHT // 2) - 125, (SCREEN_HEIGHT // 2) - 125, (SCREEN_HEIGHT // 2) - 125, (SCREEN_HEIGHT // 2) - 25, (SCREEN_HEIGHT // 2) - 25, (SCREEN_HEIGHT // 2) - 25, (SCREEN_HEIGHT // 2) + 75))
 
     BUTTON_HEIGHT = 50
     BUTTON_GAP_Y = 20
-    for i in range(9):
+    for i in range(8):
         button_rect = pygaming.Rect(
             BUTTON_X_POS[i]*xscale,
             (BUTTON_Y_POS[i] + y_scroll)*yscale,
