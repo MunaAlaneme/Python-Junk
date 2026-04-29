@@ -1,66 +1,95 @@
 /* BLUEPRINT-JS-START */
-// 🚀 Auto-generado para python: 4/29/2026, 8:38:36 AM
+// 🚀 Auto-generado para python: 4/29/2026, 11:56:46 AM
 
 'use strict';
 
-console.log('✅ 3 funciones y 1 clases detectadas');
+console.log('✅ 2 funciones y 0 clases detectadas');
 
 // Funciones interactivas
-function demo_draw() {
-    console.log('▶️ Ejecutando: draw()');
-    alert('Función draw() ejecutada');
+function demo_PlayMusic() {
+    console.log('▶️ Ejecutando: PlayMusic()');
+    alert('Función PlayMusic() ejecutada');
 }
 
-function demo_is_hovered() {
-    console.log('▶️ Ejecutando: is_hovered()');
-    alert('Función is_hovered() ejecutada');
+function demo_constrain() {
+    console.log('▶️ Ejecutando: constrain()');
+    alert('Función constrain() ejecutada');
 }
 
-function demo_is_clicked() {
-    console.log('▶️ Ejecutando: is_clicked()');
-    alert('Función is_clicked() ejecutada');
+
+// 🛒 Lógica de Tienda Automática con MockServer
+function addToCart(product, price) {
+    const item = { 
+        product, 
+        price, 
+        date: new Date().toLocaleString() 
+    };
+    
+    if (window.MockServer) {
+        MockServer.save('orders', item);
+        console.log('📦 Pedido guardado:', item);
+        
+        // Disparar evento para actualizar historial
+        window.dispatchEvent(new CustomEvent('orderUpdated'));
+    } else {
+        alert('¡' + product + ' añadido al carrito!');
+    }
+    updateCartUI();
 }
 
-// Clases detectadas
-console.log('📦 Clase: CoolButton');
+function updateCartUI() {
+    const badge = document.getElementById('cart-badge');
+    if (badge && window.MockServer) {
+        badge.innerText = MockServer.get('orders').length;
+    }
+}
 
-// 🎮 Motor de Juego Pro (BluePrint Engine)
-const Game = {
-    canvas: null, ctx: null, lastTime: 0, score: 0, active: true,
+console.log('🛍️ Sistema de Tienda Pro con Persistencia listo.');
+
+// 📜 Sistema de Historial de Pedidos Automático
+window.StoreHistory = {
     init() {
-        this.canvas = document.createElement('canvas');
-        this.ctx = this.canvas.getContext('2d');
-        document.querySelector('.container').appendChild(this.canvas);
-        this.resize();
-        window.addEventListener('resize', () => this.resize());
-        console.log('🎮 Motor iniciado. Preparando ciclo de juego...');
-        this.loop(0);
+        console.log('📜 Historial de Tienda Activado');
+        this.render();
+        
+        // Escuchar actualizaciones de pedidos
+        window.addEventListener('orderUpdated', () => this.render());
+        
+        // También refrescar periódicamente o si cambia localStorage
+        window.addEventListener('storage', () => this.render());
     },
-    resize() {
-        this.canvas.width = 600; this.canvas.height = 400;
-    },
-    update(dt) {
-        if (!this.active) return;
-        // Lógica de juego aquí
-    },
+    
     render() {
-        const { ctx, canvas } = this;
-        ctx.fillStyle = '#1a1a2e'; ctx.fillRect(0, 0, canvas.width, canvas.height);
-        ctx.fillStyle = '#00f7ff'; ctx.font = '20px Arial';
-        ctx.fillText('Score: ' + this.score, 20, 30);
-    },
-    loop(time) {
-        const dt = time - this.lastTime; this.lastTime = time;
-        this.update(dt); this.render();
-        requestAnimationFrame((t) => this.loop(t));
-    },
-    saveScore() {
-        if (window.MockServer) {
-            MockServer.save('highscores', { score: this.score, date: new Date().toLocaleDateString() });
+        const historyList = document.getElementById('order-history-list');
+        if (!historyList || !window.MockServer) return;
+        
+        const orders = MockServer.get('orders').reverse(); // Ver los más nuevos primero
+        
+        if (orders.length === 0) {
+            historyList.innerHTML = '<p style="color: #666; font-style: italic;">No hay pedidos registrados aún.</p>';
+            return;
         }
+        
+        let html = '<table class="history-table">';
+        html += '<thead><tr><th>Fecha</th><th>Producto</th><th>Precio</th><th>Acción</th></tr></thead>';
+        html += '<tbody>';
+        
+        orders.forEach(order => {
+            html += '<tr>';
+            html += '<td>' + order.date + '</td>';
+            html += '<td style="font-weight: bold;">' + order.product + '</td>';
+            html += '<td style="color: #10b981; font-weight: bold;">' + order.price + '</td>';
+            html += '<td><button class="btn-delete-sm" onclick="MockServer.delete(\'orders\', \'' + order.id_uuid + '\'); window.dispatchEvent(new CustomEvent(\'orderUpdated\'));">🗑️</button></td>';
+            html += '</tr>';
+        });
+        
+        html += '</tbody></table>';
+        historyList.innerHTML = html;
+        console.log('✅ Historial renderizado:', orders.length, 'pedidos');
     }
 };
-document.addEventListener('DOMContentLoaded', () => Game.init());
+
+document.addEventListener('DOMContentLoaded', () => StoreHistory.init());
 
 // 🧬 Servidor Universal de Datos (Multi-Use)
 window.MockServer = {

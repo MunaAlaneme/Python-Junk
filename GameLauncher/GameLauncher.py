@@ -193,8 +193,6 @@ while running:
                             from assets.games.TicTacToe import AutoTicTacToe
                         elif (i+1) == 8:
                             from assets.games.TicTacToe import ManualTicTacToe
-                        elif (i+1) == 9:
-                            from assets.games.ClickerGame import ClickerGame
                         screen = pygaming.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT),  pygaming.RESIZABLE)
                         pygaming.display.set_caption('Game Launcher')
                         running = True

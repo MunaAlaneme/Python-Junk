@@ -1,7 +1,7 @@
 # Import modules
 import pygame
 import random
-import pyautogui
+#import pyautogui
 from pygame.locals import *
 
 class Tiles:
@@ -130,7 +130,8 @@ def isGameOver():
             tiles[i].movable = False
             tiles[i].selected - False
 # Window dimension
-page_width, page_depth = pyautogui.size()
+#page_width, page_depth = pyautogui.size()
+page_width, page_depth = 1280,720
 page_width = int(page_width * 0.95)
 page_depth = int(page_depth * 0.95)
 # Tile dimensions

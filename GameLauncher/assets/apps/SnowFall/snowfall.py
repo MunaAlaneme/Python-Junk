@@ -1,7 +1,7 @@
 import pygame
 import time
 import random
-import pyautogui
+#import pyautogui
 from pygame import *
 import math
 pygame.init()
@@ -10,7 +10,8 @@ WHITE = [255, 255, 255]
 GREEN = [0, 255, 0]
 BLUE = [0, 0, 255]
 RED = [255, 0, 0]
-WIDTH, HEIGHT = pyautogui.size()
+#WIDTH, HEIGHT = pyautogui.size()
+WIDTH, HEIGHT = 1280,720
 SIZE = [int(WIDTH), int(HEIGHT*0.9)]
 screen = pygame.display.set_mode(SIZE)
 pygame.display.set_caption("MunaAlaneme - Snow Fall")

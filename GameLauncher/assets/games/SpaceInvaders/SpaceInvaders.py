@@ -52,13 +52,13 @@ def game_over():
 # Background Sound
 mus = random.randint(1,2)
 if mus == 1:
-    mixer.music.load("SpaceInvaders/assets/audio/uplift - awesome HIGH QUALITY.wav")
+    mixer.music.load("GameLauncher/assets/games/SpaceInvaders/assets/audio/uplift - awesome HIGH QUALITY.wav")
 elif mus == 2:
-    mixer.music.load("SpaceInvaders/assets/audio/uplift - lols HIGH QUALITY.wav")
+    mixer.music.load("GameLauncher/assets/games/SpaceInvaders/assets/audio/uplift - lols HIGH QUALITY.wav")
 mixer.music.play(-1)
 
 # Player
-playerImage = pygame.image.load("SpaceInvaders/assets/img/KingsnakePlane.png")
+playerImage = pygame.image.load("GameLauncher/assets/games/SpaceInvaders/assets/img/KingsnakePlane.png")
 player_X = 740
 player_Y = 785
 player_Xchange = 0
@@ -73,7 +73,7 @@ invader_Ychange = []
 no_of_invaders = 20
 
 for num in range(no_of_invaders):
-    invaderImage.append(pygame.image.load('SpaceInvaders/assets/img/Albatros D.V.png'))
+    invaderImage.append(pygame.image.load('GameLauncher/assets/games/SpaceInvaders/assets/img/Albatros D.V.png'))
     invader_X.append(random.randint(128, 1472))
     invader_Y.append(random.randint(60, 400))
     invader_Xchange.append(1.2)
@@ -82,7 +82,7 @@ for num in range(no_of_invaders):
 # Bullet
 # rest - bullet is not moving
 # fire - bullet is moving
-bulletImage = pygame.image.load("SpaceInvaders/assets/img/bullet.png")
+bulletImage = pygame.image.load("GameLauncher/assets/games/SpaceInvaders/assets/img/bullet.png")
 bullet_X = 0
 bullet_Y = 500
 bullet_X2 = 0
@@ -154,21 +154,21 @@ while running:
                     bullet_X = player_X
                     bullet_Y = player_Y
                     bullet(bullet_X, bullet_Y)
-                    bullet_sound = mixer.Sound('SpaceInvaders/assets/audio/gunshot1.wav')
+                    bullet_sound = mixer.Sound('GameLauncher/assets/games/SpaceInvaders/assets/audio/gunshot1.wav')
                     bullet_sound.play()
                     bullets_left -= 1
                 elif bullet_state2 == "rest" and bullets_left == 2:
                     bullet_X2 = player_X
                     bullet_Y2 = player_Y
                     bullet2(bullet_X2, bullet_Y2)
-                    bullet_sound = mixer.Sound('SpaceInvaders/assets/audio/gunshot1.wav')
+                    bullet_sound = mixer.Sound('GameLauncher/assets/games/SpaceInvaders/assets/audio/gunshot1.wav')
                     bullet_sound.play()
                     bullets_left -= 1
                 elif bullet_state3 == "rest" and bullets_left == 1:
                     bullet_X3 = player_X
                     bullet_Y3 = player_Y
                     bullet3(bullet_X3, bullet_Y3)
-                    bullet_sound = mixer.Sound('SpaceInvaders/assets/audio/gunshot1.wav')
+                    bullet_sound = mixer.Sound('GameLauncher/assets/games/SpaceInvaders/assets/audio/gunshot1.wav')
                     bullet_sound.play()
                     bullets_left -= 1
         if event.type == pygame.KEYUP:
@@ -211,7 +211,7 @@ while running:
                 for j in range(no_of_invaders):
                     invader_Y[j] = 2000
                 if (isitagameover == 0):
-                    explosion_sound = mixer.Sound('SpaceInvaders/assets/audio/explosion.wav')
+                    explosion_sound = mixer.Sound('GameLauncher/assets/games/SpaceInvaders/assets/audio/explosion.wav')
                     explosion_sound.play()
                     mixer.music.stop()
                     game_over()
@@ -228,7 +228,7 @@ while running:
         if collision or collision2 or collision3:
             score_val += 1
             ScorePointBGchange += 360
-            explosion2_sound = mixer.Sound('SpaceInvaders/assets/audio/explosion1.wav')
+            explosion2_sound = mixer.Sound('GameLauncher/assets/games/SpaceInvaders/assets/audio/explosion1.wav')
             explosion2_sound.play()
             if collision:
                 bullet_Y = 900
